@@ -12,7 +12,7 @@ class Tabla extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:8000/prestamos/')
+    fetch('http://127.0.0.1:8000/libros/')
       .then(response => response.json())
       .then(pres => {
         this.setState({ prestamos: pres });
@@ -27,7 +27,7 @@ class Tabla extends Component {
   }
 
   deletePrestamo(id) {
-    fetch(`http://localhost:8000/prestamos/${id}/`, {
+    fetch(`http://127.0.0.1:8000/libros/${id}/`, {
       method: 'DELETE',
     })
       .then(response => response.json())
