@@ -1,5 +1,7 @@
 from django.db import models
 from re import I
+
+
 # Create your models here.
 class Libro(models.Model):
     id_libro = models.IntegerField(primary_key=True)
@@ -34,12 +36,13 @@ class Usuario(models.Model):
     
 class Prestamo(models.Model):
     id_prestamo = models.IntegerField(primary_key=True)
-    titulo = models.ForeignKey(Libro, on_delete=models.CASCADE)
+    libro = models.ForeignKey(Libro, on_delete=models.CASCADE)
     nombre_usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     fec_prestamo = models.DateField()
     fec_devolucion = models.DateField()
 
-    def titulo(self):
-        return"{}".format(self.nombre_usuario)
+    def titulo_libro(self):
+        return str(self.libro)
+
     def __str__(self) -> str:
-        return self.titulo()
+        return self.titulo_libro()

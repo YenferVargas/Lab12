@@ -3,14 +3,16 @@ from .models import Prestamo
 
 class PrestamoSerializer(serializers.ModelSerializer):
     id_prestamo = serializers.IntegerField(read_only=True)
-    nombre_usuario = serializers.CharField()
-    titulo = serializers.CharField()
+    nombre_usuario = serializers.CharField(source='nombre_usuario.nombre_usuario', read_only=True)
+
+    titulo = serializers.CharField(source='libro.titulo', read_only=True)
+
     fec_prestamo = serializers.DateField()
     fec_devolucion = serializers.DateField()
 
     class Meta:
         model = Prestamo
-        fields = ('id_prestamo', 'titulo', 'nombre_usuario', 'fec_prestamo', 'fec_devolucion')
+        fields = ('id_prestamo', 'nombre_usuario', 'titulo', 'fec_prestamo', 'fec_devolucion')
 
     def create(self, validated_data):
         return Prestamo.objects.create(**validated_data)
