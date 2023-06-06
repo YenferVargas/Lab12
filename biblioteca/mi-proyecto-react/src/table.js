@@ -115,15 +115,19 @@ class TablaComponent extends Component {
   }
 
   render() {
-    const rows = this.state.prestamos.map(prestamo =>
+    const {prestamos}= this.state;
+    const rows = prestamos.map(prestamo =>
       <tr key={prestamo.idPrestamo}>
-        <td>{prestamo.idPrestamo}</td>
-        <td>{prestamo.idLibro}</td>
-        <td>{prestamo.idUsuario}</td>
-        <td>{prestamo.fech_prestamo}</td>
-        <td>{prestamo.fech_devolucion}</td>
+        <td>{prestamo.id_prestamo}</td>
+        <td>{prestamo.titulo}</td>
+        <td>{prestamo.nombre_usuario}</td>
+        <td>{prestamo.fec_prestamo}</td>
+        <td>{prestamo.fec_devolucion}</td>
         <td>
-          <button type="button" className="btn btn-warning">Editar</button>
+        <button type="button" className="btn btn-warning" onClick={() => this.editPrestamoButton(prestamo.idPrestamo)}>
+            Editar
+          </button>
+
         </td>
         <td>
           <button type="submit" className="btn btn-danger" onClick={() => this.deletePrestamo(prestamo.idPrestamo)}>Borrar</button>
