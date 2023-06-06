@@ -9,7 +9,7 @@ import Tabla from './table.js';
 class App extends Component{
   render(){
     return(
-      <div class="App container py-5">
+      <div className="App container py-5">
         <h2>Prestamos de Libros</h2>
         <br></br>
         <Tabla></Tabla>
