@@ -83,6 +83,17 @@ class TablaComponent extends Component {
       fech_devolucion: fech_devolucion
     };
 
+    
+    
+
+
+
+
+
+
+
+
+
     fetch(`http://127.0.0.1:8000/libros/${id}/`, {
       method: 'PUT',
       headers: {
@@ -124,9 +135,7 @@ class TablaComponent extends Component {
         <td>{prestamo.fec_prestamo}</td>
         <td>{prestamo.fec_devolucion}</td>
         <td>
-        <button type="button" className="btn btn-warning" onClick={() => this.editPrestamoButton(prestamo.idPrestamo)}>
-            Editar
-          </button>
+        <button type="button" className="btn btn-warning" onClick={() => this.editPrestamo(prestamo.idPrestamo)}>Editar</button>
 
         </td>
         <td>
